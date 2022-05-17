@@ -1,0 +1,30 @@
+.item {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid transparent;
+  height: 550px;
+  position: relative;
+}
+.item:hover {
+  border: 2px solid #000;
+  border-radius: 2px;
+}
+
+.description,
+.price {
+  margin: 10px 0;
+}
+.item button {
+  width: 90%;
+  background: #000;
+  border: 0;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 17px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  margin: 10px auto;
+  left: 0;
+  right: 0;
+}

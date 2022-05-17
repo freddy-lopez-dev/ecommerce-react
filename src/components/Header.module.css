@@ -1,0 +1,60 @@
+.cart-icon a {
+  color: #fff;
+  text-decoration: none;
+}
+.cart-icon {
+  display: flex;
+  color: #fff;
+}
+.cart-icon-values {
+  display: grid;
+  margin-right: 10px;
+  align-items: end;
+}
+.cart-icon i {
+  font-size: 20px;
+  width: 43px;
+  line-height: 43px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  border: 2px solid #fff;
+}
+.cart-icon div {
+  font-size: 16px;
+}
+
+.cart {
+  width: 420px;
+  margin: auto;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr;
+  padding: 5px 10px;
+  align-items: center;
+}
+
+.cart-item:nth-of-type(odd) {
+  background-color: #eaeaea;
+}
+.cart-item button {
+  color: #980000;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  text-align: right;
+}
+.total {
+  font-size: 20px;
+  margin: 10px;
+  font-weight: 700;
+  text-align: right;
+}
+.keep-shopping i {
+  margin-top: 20px;
+  margin-right: 10px;
+}
