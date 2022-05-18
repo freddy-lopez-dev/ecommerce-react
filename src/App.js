@@ -31,19 +31,32 @@ function App() {
 
   const addToCartItem = (id) => {
     const selectedItem = items.find((item) => item.id === +id);
-    setCartItems((prevState) => {
-      return [
-        ...prevState,
-        {
-          id: selectedItem.id,
-          price: selectedItem.price,
-          title: selectedItem.title,
-          Qty: 1,
-          totalPrice: selectedItem.price,
-        },
-        //Fix if the same item is being added just add qty
-      ];
-    });
+    const findItemInCart = cartItems.find((item) => item.id === +id);
+    if (findItemInCart) {
+      setCartItems(
+        cartItems.map((item) => {
+          if (item.id === +id) {
+            item.Qty = item.Qty + 1;
+            const getTotal = item.Qty * item.price;
+            item.totalPrice = +getTotal.toFixed(2);
+          }
+          return item;
+        })
+      );
+    } else {
+      setCartItems((prevState) => {
+        return [
+          ...prevState,
+          {
+            id: selectedItem.id,
+            price: selectedItem.price,
+            title: selectedItem.title,
+            Qty: 1,
+            totalPrice: selectedItem.price,
+          },
+        ];
+      });
+    }
   };
 
   const removeToCart = (id) => {
