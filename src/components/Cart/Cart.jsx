@@ -2,7 +2,7 @@ import CartItem from "./CartItem";
 import styles from "./Cart.module.css";
 
 const Cart = (props) => {
-  const { cartItems, removeToCart } = props;
+  const { cartItems, removeToCart, totalAmount } = props;
   return (
     <aside className={styles.cart}>
       <h2>Your Cart</h2>
@@ -20,7 +20,7 @@ const Cart = (props) => {
           );
         })}
       </ul>
-      <div className={styles.total}>Total: $604.93</div>
+      <div className={styles.total}>Total: ${totalAmount}</div>
     </aside>
   );
 };

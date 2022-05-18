@@ -6,10 +6,14 @@ const Header = (props) => {
   return (
     <header className={styles.header}>
       <h1>MouseHeaven</h1>
-      <CartSummary />
+      <CartSummary
+        totalAmount={props.totalAmount}
+        cartItems={props.listOfItemInCart}
+      />
       <Cart
         cartItems={props.listOfItemInCart}
         removeToCart={props.removeToCart}
+        totalAmount={props.totalAmount}
       />
     </header>
   );

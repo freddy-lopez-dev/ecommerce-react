@@ -54,11 +54,15 @@ function App() {
     return (total += item.price);
   }, 0);
 
-  console.log(getTotalAmount);
+  console.log(cartItems.length);
 
   return (
     <div id="root">
-      <Header listOfItemInCart={cartItems} removeToCart={removeToCart} />
+      <Header
+        listOfItemInCart={cartItems}
+        removeToCart={removeToCart}
+        totalAmount={getTotalAmount.toFixed(2)}
+      />
       <main>
         <ItemList listOfItems={items} addToCart={addToCartItem} />
       </main>
