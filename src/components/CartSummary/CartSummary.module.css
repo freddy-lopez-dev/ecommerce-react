@@ -1,0 +1,30 @@
+.cart-icon a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.cart-icon {
+  display: flex;
+  color: #fff;
+}
+
+.cart-icon-values {
+  display: grid;
+  margin-right: 10px;
+  align-items: end;
+}
+
+.cart-icon i {
+  font-size: 20px;
+  width: 43px;
+  line-height: 43px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  border: 2px solid #fff;
+}
+
+.cart-icon div {
+  font-size: 16px;
+}

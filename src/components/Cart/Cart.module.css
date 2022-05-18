@@ -1,0 +1,18 @@
+.cart {
+  width: 420px;
+  padding: 0 20px 20px 20px;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 67px;
+  background: #5a5a5a;
+  z-index: 999;
+  color: black;
+}
+
+.total {
+  font-size: 20px;
+  margin: 10px;
+  font-weight: 700;
+  text-align: right;
+}

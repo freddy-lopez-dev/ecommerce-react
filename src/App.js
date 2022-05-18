@@ -1,7 +1,7 @@
 import "./App.css";
-import Header from "./components/Header";
-import Items from "./components/Items";
 import { useState, useEffect } from "react";
+import Header from "./components/Header/Header";
+import ItemList from "./components/ItemList/ItemList";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -14,6 +14,7 @@ function App() {
     const items = await response.json();
     return items.map((item) => {
       return {
+        alt: item.name,
         id: item.id,
         title: item.name,
         image: item.imageURL,
@@ -28,10 +29,39 @@ function App() {
     getItems().then((items) => setItems(items));
   }, []);
 
+  const addToCartItem = (id) => {
+    const selectedItem = items.find((item) => item.id === +id);
+    setCartItems((prevState) => {
+      return [
+        ...prevState,
+        {
+          id: selectedItem.id,
+          price: selectedItem.price,
+          title: selectedItem.title,
+          Qty: 1,
+        },
+      ];
+    });
+  };
+
+  const removeToCart = (id) => {
+    setCartItems((prevState) => {
+      return prevState.filter((item) => item.id !== +id);
+    });
+  };
+
+  const getTotalAmount = cartItems.reduce((total, item) => {
+    return (total += item.price);
+  }, 0);
+
+  console.log(getTotalAmount);
+
   return (
     <div id="root">
-      <Header cartItems={cartItems} />
-      <Items listOfItems={items} />
+      <Header listOfItemInCart={cartItems} removeToCart={removeToCart} />
+      <main>
+        <ItemList listOfItems={items} addToCart={addToCartItem} />
+      </main>
     </div>
   );
 }

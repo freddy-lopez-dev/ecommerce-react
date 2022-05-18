@@ -1,0 +1,29 @@
+.cart-item {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 1fr;
+  padding: 5px 10px;
+  align-items: center;
+}
+
+.cart-item:nth-of-type(odd) {
+  background-color: #eaeaea;
+}
+
+.cart-item:nth-of-type(even) {
+  background-color: #8b8b8b;
+}
+
+.cart-item .remove-from-cart {
+  color: #980000;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  text-align: right;
+}
+
+.quantity button {
+  color: black;
+  font-size: 15px;
+  padding: 0 5px;
+}
