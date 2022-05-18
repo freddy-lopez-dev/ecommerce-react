@@ -1,7 +1,12 @@
 import styles from "./CartSummary.module.css";
 
 const CartSummary = (props) => {
-  const { cartItems } = props;
+  const { cartItems, toggleCart } = props;
+
+  const toggleCartHandler = () => {
+    toggleCart();
+  };
+
   return (
     <div className={styles["cart-icon"]}>
       <div className="cart-icon-values">
@@ -10,7 +15,7 @@ const CartSummary = (props) => {
           {cartItems.length <= 1 ? "item" : "items"}
         </div>
       </div>
-      <i className="fas fa-shopping-cart"></i>
+      <i className="fas fa-shopping-cart" onClick={toggleCartHandler}></i>
     </div>
   );
 };

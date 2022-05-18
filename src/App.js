@@ -39,6 +39,7 @@ function App() {
           price: selectedItem.price,
           title: selectedItem.title,
           Qty: 1,
+          totalPrice: selectedItem.price,
         },
       ];
     });
@@ -50,18 +51,44 @@ function App() {
     });
   };
 
-  const getTotalAmount = cartItems.reduce((total, item) => {
-    return (total += item.price);
-  }, 0);
+  const incrementItemQty = (id) => {
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.id === +id) {
+          item.Qty = item.Qty + 1;
+          const getTotal = (item.Qty * item.price).toFixed(2);
+          item.totalPrice = +getTotal;
+        }
+        return item;
+      })
+    );
+  };
 
-  console.log(cartItems.length);
+  const decrementItemQty = (id) => {
+    setCartItems(
+      cartItems.map((item) => {
+        if (item.id === +id) {
+          item.Qty = item.Qty - 1;
+          const getTotal = (item.Qty * item.price).toFixed(2);
+          item.totalPrice = +getTotal;
+        }
+        return item;
+      })
+    );
+  };
+
+  const getTotalAmount = cartItems.reduce((total, item) => {
+    return (total += item.totalPrice);
+  }, 0);
 
   return (
     <div id="root">
       <Header
         listOfItemInCart={cartItems}
         removeToCart={removeToCart}
-        totalAmount={getTotalAmount.toFixed(2)}
+        totalAmount={getTotalAmount}
+        incrementItemQty={incrementItemQty}
+        decrementItemQty={decrementItemQty}
       />
       <main>
         <ItemList listOfItems={items} addToCart={addToCartItem} />
