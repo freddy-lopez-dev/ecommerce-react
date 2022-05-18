@@ -12,6 +12,7 @@ const CartSummary = (props) => {
       <div className="cart-icon-values">
         <div className="cart-total">${props.totalAmount}</div>
         <div className="in-cart-items">
+          {cartItems.length}
           {cartItems.length <= 1 ? "item" : "items"}
         </div>
       </div>

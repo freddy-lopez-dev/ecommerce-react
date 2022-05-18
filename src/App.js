@@ -41,6 +41,7 @@ function App() {
           Qty: 1,
           totalPrice: selectedItem.price,
         },
+        //Fix if the same item is being added just add qty
       ];
     });
   };
@@ -56,8 +57,8 @@ function App() {
       cartItems.map((item) => {
         if (item.id === +id) {
           item.Qty = item.Qty + 1;
-          const getTotal = (item.Qty * item.price).toFixed(2);
-          item.totalPrice = +getTotal;
+          const getTotal = item.Qty * item.price;
+          item.totalPrice = +getTotal.toFixed(2);
         }
         return item;
       })
@@ -69,12 +70,19 @@ function App() {
       cartItems.map((item) => {
         if (item.id === +id) {
           item.Qty = item.Qty - 1;
-          const getTotal = (item.Qty * item.price).toFixed(2);
-          item.totalPrice = +getTotal;
+          const getTotal = item.Qty * item.price;
+          item.totalPrice = +getTotal.toFixed(2);
         }
         return item;
       })
     );
+    removeItemZeroQty();
+  };
+
+  const removeItemZeroQty = () => {
+    setCartItems((prevState) => {
+      return prevState.filter((item) => item.Qty !== 0);
+    });
   };
 
   const getTotalAmount = cartItems.reduce((total, item) => {
@@ -86,7 +94,7 @@ function App() {
       <Header
         listOfItemInCart={cartItems}
         removeToCart={removeToCart}
-        totalAmount={getTotalAmount}
+        totalAmount={getTotalAmount.toFixed(2)}
         incrementItemQty={incrementItemQty}
         decrementItemQty={decrementItemQty}
       />
